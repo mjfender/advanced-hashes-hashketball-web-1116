@@ -123,7 +123,8 @@ def good_practices
     #binding.pry
 
       team_data.each do |attribute, data|
-        # attribute == team_name, data == "Brooklyn Nets"
+        # attribute == team_name(string) or colors(array) or players(hash),
+        # data == "Brooklyn Nets" or Array of Colors or Hash of Player Names
         #binding.pry
 
         if data.kind_of?(Hash)
@@ -145,7 +146,8 @@ def num_points_scored(name)
     #binding.pry
 
       team_data.each do |attribute, data|
-        # attribute == team_name, data == "Brooklyn Nets"
+        # attribute == team_name(string) or colors(array) or players(hash),
+        # data == "Brooklyn Nets" or Array of Colors or Hash of Player Names
         #binding.pry
 
         if data.kind_of?(Hash)
@@ -164,19 +166,29 @@ def num_points_scored(name)
   end
 
 def team_colors(name_team)
-  team_colors = []
-  game_hash.each do |location, team_data|
-  #location == :home// team_data == :team_name
+  # # team_colors = []
+  # game_hash.each do |location, team_data|
+  # #location == :home// team_data == :team_name
+  #
+  #     team_data.each do |attribute, data|
+  #     # attribute == team_name, data == "Brooklyn Nets"
+  #     if data == name_team
+  #       #puts "#{attribute[:colors]} and #{attribute[:colors].class}"
+  #       team_colors = team_data[:colors]
+  #     end
+  #   end
+  # end
+  # team_colors
 
-      team_data.each do |attribute, data|
-      # attribute == team_name, data == "Brooklyn Nets"
-      if data == name_team
-        #puts "#{attribute[:colors]} and #{attribute[:colors].class}"
-        team_colors = team_data[:colors]
-      end
+game_hash.map do |location, team_data |
+    if team_data[:team_name] == name_team
+      return team_data[:colors]
     end
-  end
-  team_colors
+end
+      #team_data.select do
+      # ^  attribute: :team_name, team colors, players
+      # ^ data:
+      #data == "name_team"
 end
 
 def shoe_size(player_name)
@@ -322,4 +334,3 @@ game_hash.each do |location, team_data|
 end
 rebounds
 end
-#big_shoe_rebounds
